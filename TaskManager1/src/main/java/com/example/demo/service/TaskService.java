@@ -27,19 +27,14 @@ public class TaskService {
         return taskRepository.findAll();
     }
     public Task updateTask(Long id, Task taskDetails) {
-
-        Task task = taskRepository.findById(id).orElse(null);
-
-        if(task != null){
+        return taskRepository.findById(id).map(task -> {
             task.setTitle(taskDetails.getTitle());
             task.setDescription(taskDetails.getDescription());
             task.setStatus(taskDetails.getStatus());
             task.setProgress(taskDetails.getProgress());
-
+            task.setDueDate(taskDetails.getDueDate());
             return taskRepository.save(task);
-        }
-
-        return null;
+        }).orElseThrow(() -> new RuntimeException("Task not found with id " + id));
     }
     public List<TaskAssignment> getTasksByUser(Long userId) {
         return assignmentRepository.findByUserId(userId);
