@@ -19,6 +19,7 @@ import com.example.demo.entity.TaskAssignment;
 import com.example.demo.service.TaskService;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/tasks")
 public class TaskController {
 
