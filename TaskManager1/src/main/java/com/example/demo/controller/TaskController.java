@@ -10,18 +10,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.DashboardDTO;
 import com.example.demo.entity.Task;
 import com.example.demo.entity.TaskAssignment;
-import com.example.demo.repository.TaskRepository;
 import com.example.demo.service.TaskService;
 
 @RestController
 @RequestMapping("/api/tasks")
-@CrossOrigin(origins = "http://localhost:5174")
+@CrossOrigin("*")
 public class TaskController {
 
     @Autowired
