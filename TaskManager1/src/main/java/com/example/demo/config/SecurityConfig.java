@@ -54,6 +54,9 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
 
         CorsConfiguration config = new CorsConfiguration();
+        config.setAllowedOrigins(List.of(
+        "https://task-management-inky-one.vercel.app"
+    ));
 
         config.setAllowedOriginPatterns(List.of("*")); // allow all origins
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
