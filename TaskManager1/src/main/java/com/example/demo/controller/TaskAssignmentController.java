@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/assignments")
-@CrossOrigin(origins = "http://localhost:5174")
+@CrossOrigin("*")
 public class TaskAssignmentController {
 
     @Autowired
