@@ -1,24 +1,19 @@
 import axios from 'axios'
 
-const API_BASE_URL = 'https://task-management-yn8j.onrender.com/api/'
+const API_BASE_URL = 'http://localhost:8080/api/'
 
 const api = axios.create({
   baseURL: API_BASE_URL,
   headers: { 'Content-Type': 'application/json' },
 })
 
-// Inject JWT token on every request (Temporarily disabled to fix 403 errors)
+// Inject JWT token on every request
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token')
-
-    // ❌ DON'T send token for auth APIs
-    const api = axios.create({
-  baseURL: 'https://task-management-yn8j.onrender.com/api/',
-  headers: { 'Content-Type': 'application/json' },
-})
-
-
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`
+    }
     return config
   },
   (error) => Promise.reject(error)
