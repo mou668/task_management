@@ -13,9 +13,11 @@ api.interceptors.request.use(
     const token = localStorage.getItem('token')
 
     // ❌ DON'T send token for auth APIs
-    if (token && !config.url.includes('auth')) {
-      config.headers['Authorization'] = `Bearer ${token}`
-    }
+    const api = axios.create({
+  baseURL: 'https://task-management-yn8j.onrender.com/api/',
+  headers: { 'Content-Type': 'application/json' },
+})
+
 
     return config
   },
